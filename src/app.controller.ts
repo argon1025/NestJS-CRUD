@@ -1,27 +1,27 @@
 import { Controller, Get, Param, Query } from '@nestjs/common';
-import { ApiOperation, ApiParam, ApiQuery, ApiResponse } from '@nestjs/swagger';
+import {
+  ApiOperation,
+  ApiParam,
+  ApiQuery,
+  ApiResponse,
+  ApiTags,
+} from '@nestjs/swagger';
 import { AppService } from './app.service';
 
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
-
-  @ApiOperation({ summary: 'Helloworld!' })
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
-  }
-
+  @ApiTags('ApiServerState')
   @ApiOperation({ summary: 'API 서비스 버전과 테스트를 진행합니다' })
   @ApiQuery({
     name: 'testCode',
     required: true,
-    description: '테스트 코드 쿼리데이터',
+    description: '테스트 쿼리데이터',
   })
   @ApiParam({
     name: 'testCode',
     required: true,
-    description: '테스트 코드 파라메터',
+    description: '테스트 파라메터',
   })
   @ApiResponse({
     status: 200,
