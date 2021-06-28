@@ -1,5 +1,6 @@
 import { Body, Controller, Get, Post, Req, Res } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { User } from 'src/common/decorators/user.decorator';
 import { JoinRequestDto } from './dto/join.request.dto';
 import { UsersService } from './users.service';
 
@@ -10,9 +11,9 @@ export class UsersController {
 
   @ApiOperation({ summary: '현재 로그인된 회원정보를 조회합니다' })
   @Get()
-  getUsers(@Req() req) {
+  getUsers(@User() user) {
     // 로그인된 회원정보
-    return req.user;
+    return user;
   }
 
   @ApiOperation({ summary: '회원가입을 요청합니다' })

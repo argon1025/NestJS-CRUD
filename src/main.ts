@@ -7,6 +7,7 @@ declare const module: any;
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const port = process.env.port || 3000;
+
   // Swagger
   const config = new DocumentBuilder()
     .setTitle('API example')
